@@ -17,21 +17,18 @@ robots.txt
 ## Локальный просмотр
 
 ```bash
-cd sites/dmitry-kriukov
 python3 -m http.server 8080
 # http://localhost:8080  и  http://localhost:8080/en/
 ```
 
 ## Что заменить перед публикацией
 
-1. **Домен** — сейчас прописан `https://dmitry-photo.vercel.app` во всех
-   мета-тегах (canonical, hreflang, og, twitter), в `sitemap.xml` и в schema `url`.
+1. **Фотографии** — в `assets/img/` сейчас стоковые заглушки. Положите свои кадры
+   с теми же именами файлов.
+2. **Цены** — примерные (490 / 1490 / 190 €), поправьте под себя.
+3. **Домен** — сейчас прописан `https://dmitry-photo.vercel.app` во всех мета-тегах
+   (canonical, hreflang, og, twitter), в `sitemap.xml` и в schema `url`.
    При переезде на свой домен замените его целиком.
-2. **Контакты** — `hello@dmitrykriukov.com`, `+382 69 000 000`,
-   Telegram/Instagram/WhatsApp — в `index.html` и `en/index.html`.
-3. **Фотографии** — в `assets/img/` сейчас стоковые заглушки.
-   Положите свои кадры с теми же именами файлов.
-4. **Цены** — примерные, поправьте под себя.
 
 ## SEO
 
