@@ -1,0 +1,59 @@
+[
+  {
+    "slug": "milena-and-marko",
+    "cover": "hero-beach.jpg",
+    "images": ["hero-beach.jpg", "kiss-flare.jpg", "confetti.jpg", "rings-bouquet.jpg"],
+    "ru": {
+      "title": "Милена и Марко",
+      "location": "Пераст, Черногория",
+      "date": "Июнь 2026",
+      "lead": "Тихий день у воды: белый камень, паруса и много места между кадрами.",
+      "text": "Милена и Марко хотели без постановки и толп. Мы встретились рано, пока Пераст ещё спал, прошли к самой воде и говорили о своём. К вечеру — конфетти и первый танец на террасе. Вот всё, что я запомнил про этот день."
+    },
+    "en": {
+      "title": "Milena & Marko",
+      "location": "Perast, Montenegro",
+      "date": "June 2026",
+      "lead": "A quiet day by the water: white stone, sails and plenty of space between frames.",
+      "text": "Milena and Marko wanted no staging and no crowds. We met early while Perast was still asleep, walked down to the water and talked about themselves. By evening — confetti and the first dance on the terrace. That is all I remember about that day."
+    }
+  },
+  {
+    "slug": "quiet-kotor",
+    "cover": "portrait-woman.jpg",
+    "images": ["portrait-woman.jpg", "couple-trees.jpg", "hands-shadow.jpg", "landscape-couple.jpg"],
+    "ru": {
+      "title": "Тихий Котор",
+      "location": "Котор, Черногория",
+      "date": "Май 2026",
+      "lead": "Спокойная прогулка по старому городу и кадры, в которых вы узнаёте себя.",
+      "text": "Котор хорош в одиночестве: узкие улицы, тень, камень. Мы шли без маршрута и останавливались там, где нравился свет. Получились портреты без каталожных поз — просто люди и их город."
+    },
+    "en": {
+      "title": "Quiet Kotor",
+      "location": "Kotor, Montenegro",
+      "date": "May 2026",
+      "lead": "A slow walk through the old town and frames where you recognise yourself.",
+      "text": "Kotor is best alone: narrow streets, shade, stone. We walked without a route and stopped where the light pleased us. The result is portraits without catalogue poses — just people and their city."
+    }
+  },
+  {
+    "slug": "old-town",
+    "cover": "ceremony-balloons.jpg",
+    "images": ["ceremony-balloons.jpg", "party-kiss.jpg", "table.jpg", "detail-bouquet.jpg", "chairs.jpg", "detail-rings.jpg", "palms.jpg"],
+    "ru": {
+      "title": "Старый город",
+      "location": "Бар, Черногория",
+      "date": "Июль 2026",
+      "lead": "Утро в Баре: воздушные шары, каменные улицы и два человека, которым некуда спешить.",
+      "text": "Этот день начался с латте на старой площади и закончился ужином под пальмами. Между ними — каменные лестницы, шарики над крышами и много смеха. Лёгкая, тёплая история без лишнего пафоса."
+    },
+    "en": {
+      "title": "Old Town",
+      "location": "Bar, Montenegro",
+      "date": "July 2026",
+      "lead": "A morning in Bar: balloons, stone streets and two people in no hurry at all.",
+      "text": "The day began with a latte on the old square and ended with dinner under the palms. In between — stone staircases, balloons over the roofs and a lot of laughter. A light, warm story without extra fuss."
+    }
+  }
+]

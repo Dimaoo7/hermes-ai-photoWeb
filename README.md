@@ -7,11 +7,15 @@
 ```
 index.html          — главная (RU)
 en/index.html       — английская версия
+blog/               — блог: список историй и страницы съёмок (RU)
+en/blog/            — то же на английском
 assets/css/style.css
 assets/js/main.js
 assets/img/         — фотографии (сейчас заглушки)
 sitemap.xml
 robots.txt
+tools/stories.json  — данные историй блога (правьте здесь)
+tools/build_blog.py — генератор страниц блога
 ```
 
 ## Локальный просмотр
@@ -44,3 +48,15 @@ python3 -m http.server 8080
 - лайтбокс по клику на кадры
 - аккордеон FAQ на нативных `<details>` (индексируется)
 - адаптив 390 / 768 / 1080 / 1440, учтён `prefers-reduced-motion`
+
+## Блог
+
+Правишь `tools/stories.json` (название, место, дата, текст, список кадров) и
+запускаешь:
+
+```bash
+python3 tools/build_blog.py
+```
+
+Появляются `blog/<slug>/index.html` и `en/blog/<slug>/index.html`, плюс обновляется
+список в `blog/index.html`. Не забудь добавить новые URL в `sitemap.xml`.

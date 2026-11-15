@@ -3,12 +3,13 @@
   'use strict';
 
   var header = document.querySelector('.header');
-  var hero = document.querySelector('.hero');
+  var hero = document.querySelector('.hero, .post-hero');
 
   /* ---- header: transparent over the hero, solid afterwards ---- */
   function onScroll() {
     var y = window.scrollY || 0;
-    var trigger = hero ? Math.min(hero.offsetHeight - 120, window.innerHeight * 0.7) : 80;
+    if (!hero) { header.classList.add('header--solid'); header.classList.remove('header--over-hero'); return; }
+    var trigger = Math.min(hero.offsetHeight - 120, window.innerHeight * 0.7);
     header.classList.toggle('header--solid', y > trigger);
     header.classList.toggle('header--over-hero', y <= trigger);
   }
