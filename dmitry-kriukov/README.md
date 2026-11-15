@@ -24,8 +24,9 @@ python3 -m http.server 8080
 
 ## Что заменить перед публикацией
 
-1. **Домен** — везде стоит заглушка `https://dmitrykriukov.com/`
-   (canonical, hreflang, og:url, sitemap, schema `url`).
+1. **Домен** — сейчас прописан `https://dmitry-photo.vercel.app` во всех
+   мета-тегах (canonical, hreflang, og, twitter), в `sitemap.xml` и в schema `url`.
+   При переезде на свой домен замените его целиком.
 2. **Контакты** — `hello@dmitrykriukov.com`, `+382 69 000 000`,
    Telegram/Instagram/WhatsApp — в `index.html` и `en/index.html`.
 3. **Фотографии** — в `assets/img/` сейчас стоковые заглушки.
