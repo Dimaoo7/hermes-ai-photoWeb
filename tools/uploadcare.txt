@@ -6,4 +6,11 @@
 5da9bd47be7208faac81
 ```
 
+CDN-домен проекта (отсюда отдаются загруженные файлы):
+
+```
+https://4um6lgewwr.ucarecd.net
+```
+
 Страницы загрузки: `blog/upload/`, `en/blog/upload/`.
+Эндпоинт загрузки: `https://upload.uploadcare.com/base/`.
