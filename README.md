@@ -60,3 +60,9 @@ python3 tools/build_blog.py
 
 Появляются `blog/<slug>/index.html` и `en/blog/<slug>/index.html`, плюс обновляется
 список в `blog/index.html`. Не забудь добавить новые URL в `sitemap.xml`.
+
+## Загрузка фото
+
+`blog/upload/` (и `en/blog/upload/`) — страница с drag&drop загрузкой через
+Uploadcare. Публичный ключ лежит в `tools/uploadcare.txt` и в обеих страницах.
+Файлы сохраняются в аккаунт Uploadcare, страница показывает их CDN-ссылки.

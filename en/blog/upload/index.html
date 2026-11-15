@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Upload photos | Dmitry Kriukov</title>
+<meta name="description" content="Upload your shoot photographs: drag and drop or pick them from your device. Photos are stored and ready to be published in the blog.">
+<link rel="canonical" href="https://dmitry-photo.vercel.app/en/blog/upload/">
+<link rel="alternate" hreflang="ru" href="https://dmitry-photo.vercel.app/blog/upload/">
+<link rel="alternate" hreflang="en" href="https://dmitry-photo.vercel.app/en/blog/upload/">
+<link rel="alternate" hreflang="x-default" href="https://dmitry-photo.vercel.app/blog/upload/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dmitry Kriukov Photography">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Upload photos | Dmitry Kriukov">
+<meta property="og:description" content="Upload your shoot photographs — ready to be published in the blog.">
+<meta property="og:url" content="https://dmitry-photo.vercel.app/en/blog/upload/">
+<meta property="og:image" content="https://dmitry-photo.vercel.app/assets/img/hero-beach.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Upload photos | Dmitry Kriukov">
+<meta name="twitter:image" content="https://dmitry-photo.vercel.app/assets/img/hero-beach.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23191512'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='19' fill='%23FAF7F1' text-anchor='middle'%3EDK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<header class="header header--over-hero" id="top">
+  <div class="wrap header__in">
+    <a class="header__logo" href="../../en/">Dmitry Kriukov</a>
+    <nav class="header__nav" aria-label="Main navigation">
+      <a href="../../en/#portfolio">Portfolio</a>
+      <a href="../">Blog</a>
+      <a href="../../en/#services">Services</a>
+      <a href="../../en/#prices">Prices</a>
+      <a href="../../en/#contacts">Contact</a>
+    </nav>
+    <div class="header__right">
+      <div class="lang" aria-label="Language">
+        <a href="../../blog/upload/" hreflang="ru">RU</a><span>/</span><a href="./" hreflang="en" aria-current="true">EN</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Upload photos</p>
+        <h2>Upload your shoot photos</h2>
+        <p>Drag files into the frame or click to pick them from your device. As many as you like, straight from your phone. Photos are stored and ready to be published in the blog.</p>
+      </div>
+
+      <div class="uploader">
+        <div class="dropzone" id="dz" tabindex="0" role="button" aria-label="Choose files">
+          <p class="dropzone__title">Drop your photos here</p>
+          <p class="dropzone__sub">or click to browse · JPG, PNG, HEIC</p>
+          <input type="file" id="file" accept="image/*" multiple hidden>
+        </div>
+
+        <div class="uploader__results" id="up-results" aria-live="polite"></div>
+        <textarea class="uploader__urls" id="up-urls" readonly placeholder="Links to uploaded files will appear here"></textarea>
+        <p class="uploader__note">Uploaded? Write to me on Telegram <a href="https://t.me/DimaKr01"><b>@DimaKr01</b></a> or at <a href="mailto:dimakrjukov@gmail.com"><b>dimakrjukov@gmail.com</b></a> — I will publish the photos in the blog and on the shoot page.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__in">
+    <span>© <span data-year>2026</span> Dmitry Kriukov</span>
+    <span>Bar · Budva · Kotor · Perast</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox__btn" type="button" aria-label="Close">×</button>
+  <img src="" alt="">
+  <p class="lightbox__cap"></p>
+</div>
+
+<script>
+(function () {
+  var ENDPOINT = 'https://upload.uploadcare.com/base/';
+  var PUB_KEY = '5da9bd47be7208faac81';
+  var CDN_BASE = 'https://ucarecdn.com';
+
+  var dz = document.getElementById('dz');
+  var input = document.getElementById('file');
+  var grid = document.getElementById('up-results');
+  var box = document.getElementById('up-urls');
+  var urls = [];
+
+  function refresh() {
+    box.value = urls.join('\n');
+    box.placeholder = urls.length ? '' : 'Links to uploaded files will appear here';
+  }
+
+  function addResult(name, state) {
+    var p = document.createElement('p');
+    p.style.gridColumn = '1 / -1';
+    p.style.color = state === 'error' ? 'var(--accent)' : 'var(--ink-soft)';
+    p.textContent = name + (state === 'error' ? ' — upload failed' : ' — uploaded');
+    grid.appendChild(p);
+  }
+
+  function upload(file) {
+    var fd = new FormData();
+    fd.append('UPLOADCARE_PUB_KEY', PUB_KEY);
+    fd.append('file', file, file.name);
+    return fetch(ENDPOINT, { method: 'POST', body: fd })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j.file) throw new Error('no file id');
+        var url = CDN_BASE + '/' + j.file + '/';
+        urls.push(url);
+        var img = document.createElement('img');
+        img.src = url;
+        img.alt = file.name;
+        img.loading = 'lazy';
+        grid.appendChild(img);
+        refresh();
+        addResult(file.name, 'ok');
+      })
+      .catch(function () { addResult(file.name, 'error'); });
+  }
+
+  function handle(files) {
+    Array.prototype.forEach.call(files, function (f) {
+      if (!/^image\//.test(f.type)) { addResult(f.name, 'error'); return; }
+      upload(f);
+    });
+  }
+
+  dz.addEventListener('click', function () { input.click(); });
+  dz.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); input.click(); } });
+  input.addEventListener('change', function () { handle(input.files); input.value = ''; });
+  ['dragenter', 'dragover'].forEach(function (ev) {
+    dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('is-over'); });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('is-over'); });
+  });
+  dz.addEventListener('drop', function (e) { handle(e.dataTransfer.files); });
+
+  refresh();
+})();
+</script>
+<script src="../../assets/js/main.js" defer></script>
+</body>
+</html>
